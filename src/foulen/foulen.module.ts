@@ -2,8 +2,8 @@ import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { FoulenService } from './foulen.service';
 import { FoulenController } from './foulen.controller';
 
-// import { SimpleLoggerMiddleware } from '../middlewares/simple-logger.middleware';
-import { simpleFunc } from '../middlewares/simple-func.middleware';
+import { SimpleLoggerMiddleware } from '../middlewares/simple-logger.middleware';
+// import { simpleFunc } from '../middlewares/simple-func.middleware';
 
 
 @Module({
@@ -13,6 +13,6 @@ import { simpleFunc } from '../middlewares/simple-func.middleware';
 
 export class FoulenModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(simpleFunc).forRoutes({path: 'foulen', method: RequestMethod.POST});
+    consumer.apply(SimpleLoggerMiddleware).forRoutes({path: 'foulen', method: RequestMethod.POST});
   }
 }
